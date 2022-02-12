@@ -1,21 +1,18 @@
-export interface User {
-    name: string
-    age: number
-}
+import { User } from "../interfaces/User";
 
 export class MyDatabaseClassic {
     //Atributo singleton
-    private static instance: MyDatabaseClassic | null = null
+    private static _instance: MyDatabaseClassic | null = null
 
     private users: User[] = []
 
     private constructor() { }
 
     //Singleton
-    public static get getInstance(): MyDatabaseClassic {
-        if (MyDatabaseClassic.instance === null)
-            MyDatabaseClassic.instance = new MyDatabaseClassic();
-        return MyDatabaseClassic.instance
+    public static get instance(): MyDatabaseClassic {
+        if (MyDatabaseClassic._instance === null)
+            MyDatabaseClassic._instance = new MyDatabaseClassic();
+        return MyDatabaseClassic._instance
     }
 
     //Outros metodos
